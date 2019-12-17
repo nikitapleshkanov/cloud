@@ -11,8 +11,8 @@ Message = namedtuple('Message', 'text tag')
 messages = []
 
 def get_mongo_db():
-	client = MongoClient(f'mongodb+srv://pleshkanov:pleshkanov@cluster0-bmzr3.azure.mongodb.net/database', 27017)
-	return client.database.strings
+    client = MongoClient(f'mongodb+srv://pleshkanov:pleshkanov@cluster0-bmzr3.azure.mongodb.net/database', 27017)
+    return client.database.strings
 
 @app.route('/', methods=['GET'])
 def hello_world():
@@ -30,19 +30,19 @@ def add_message():
     tag = request.form['tag']
     vm1(text, tag)
     solve_tasks()
-    return redirect(url_for('main')) 
+    return redirect(url_for('main'))
 
 def func():
-	subprocess.Popen("bash vmup.sh", shell=True)
+    subprocess.Popen("bash vmup.sh", shell=True)
 
 def solve_tasks():
-	thread = threading.Thread(target=func)
-	thread.start()
+    thread = threading.Thread(target=func)
+    thread.start()
     subprocess.Popen("bash vmpy.sh", shell=True)
     subprocess.Popen("bash vmdown.sh", shell=True)
 
 
 
 def vm1(str1, str2):
-	collection = get_mongo_db()
-	collection.insert_one({'str1': str1, 'str2': str2})
+    collection = get_mongo_db()
+    collection.insert_one({'str1': str1, 'str2': str2})
