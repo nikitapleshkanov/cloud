@@ -29,6 +29,7 @@ def add_message():
     text = request.form['text']
     tag = request.form['tag']
     vm1(text, tag)
+    print('help')
     solve_tasks1()
     time.out(10)
     print(1)
@@ -42,8 +43,9 @@ def add_message():
 
 
 def solve_tasks1():
+	print('start2222')
 	subprocess.Popen("bash vmup.sh", shell=True)
-	time.sleep(400)
+	time.sleep(50)
 
 def solve_tasks2():
     subprocess.Popen("bash vmpy.sh", shell=True)
