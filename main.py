@@ -34,9 +34,9 @@ def add_message():
 
 def solve_tasks():
     subprocess.Popen("bash vmup.sh", shell=True)
-    time.sleep(10)
+    time.sleep(450)
     subprocess.Popen("bash vmpy.sh", shell=True)
-    time.sleep(10)
+    time.sleep(20)
     subprocess.Popen("bash vmdown.sh", shell=True)
 
 
