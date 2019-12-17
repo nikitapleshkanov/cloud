@@ -24,16 +24,17 @@ def main():
 
 
 @app.route('/add_message', methods=['POST'])
-def add_message():
+async def add_message():
     text = request.form['text']
     tag = request.form['tag']
     vm1(text, tag)
-    solve_tasks()
-    time.sleep(10)
+    await solve_tasks()
     return redirect(url_for('main')) 
 
-def solve_tasks():
-    subprocess.Popen("bash vmpy.sh", shell=True)
+async def solve_tasks():
+	await subprocess.Popen("bash vmup.sh", shell=True)
+    await subprocess.Popen("bash vmpy.sh", shell=True)
+    await subprocess.Popen("bash vmdown.sh", shell=True)
 
 
 
