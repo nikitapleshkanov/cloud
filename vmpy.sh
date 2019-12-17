@@ -1,0 +1,1 @@
+ssh -i ~/.ssh/azureNikita pleshkanov@40.121.43.167 python3 main.py
