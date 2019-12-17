@@ -37,7 +37,7 @@ def add_message():
     tag = request.form['tag']
     vm1(text, tag)
     solve_tasks1()
-    return redirect(url_for('main'))
+    return redirect('/result')
 
 
 
