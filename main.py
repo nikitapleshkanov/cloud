@@ -33,7 +33,7 @@ def add_message():
     return redirect(url_for('main'))
 
 def f():
-	print('help')
+    print('help')
     solve_tasks1()
     time.sleep(10)
     print(1.1)
@@ -45,17 +45,17 @@ def f():
 
 
 def solve_tasks1():
-	print('start2222')
-	subprocess.Popen("bash vmup.sh", shell=True)
-	time.sleep(10)
+    print('start2222')
+    subprocess.Popen("bash vmup.sh", shell=True)
+    time.sleep(10)
 
 def solve_tasks2():
     subprocess.Popen("bash vmpy.sh", shell=True)
     time.sleep(10)
 
 def solve_tasks3():
-	subprocess.Popen("bash vmdown.sh", shell=True)
-	time.sleep(10)
+    subprocess.Popen("bash vmdown.sh", shell=True)
+    time.sleep(10)
 
 
 def vm1(str1, str2):
