@@ -1,6 +1,7 @@
 from collections import namedtuple
 import time
 import subprocess
+import threading 
 from flask import Flask, render_template, redirect, url_for, request
 from pymongo import MongoClient
 
@@ -24,17 +25,20 @@ def main():
 
 
 @app.route('/add_message', methods=['POST'])
-async def add_message():
+def add_message():
     text = request.form['text']
     tag = request.form['tag']
     vm1(text, tag)
-    await solve_tasks()
+    solve_tasks()
     return redirect(url_for('main')) 
 
-async def solve_tasks():
-	await subprocess.Popen("bash vmup.sh", shell=True)
-    await subprocess.Popen("bash vmpy.sh", shell=True)
-    await subprocess.Popen("bash vmdown.sh", shell=True)
+
+def solve_tasks():
+	thread = threading.Thread(target=subprocess.Popen("bash vmup.sh", shell=True))
+	thread.start()
+	
+    subprocess.Popen("bash vmpy.sh", shell=True)
+    subprocess.Popen("bash vmdown.sh", shell=True)
 
 
 
