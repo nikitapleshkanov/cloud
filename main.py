@@ -37,14 +37,13 @@ def add_message():
     tag = request.form['tag']
     vm1(text, tag)
     solve_tasks1()
-    return redirect(url_for('main'))
+    return redirect(url_for('result'))
 
 
 
 
 def solve_tasks1():
     subprocess.Popen("bash script.sh", shell=True)
-    return redirect(url_for('result'))
 #    subprocess.Popen("bash vmdown.sh", shell=True)
 
 
