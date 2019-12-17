@@ -34,6 +34,7 @@ def add_message():
 
 def func():
     subprocess.Popen("bash vmup.sh", shell=True)
+    time.sleep(300)
 
 def solve_tasks():
     thread = threading.Thread(target=func)
