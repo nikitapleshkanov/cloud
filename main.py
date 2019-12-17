@@ -32,13 +32,9 @@ def add_message():
     solve_tasks()
     return redirect(url_for('main'))
 
-def func():
-    subprocess.Popen("bash vmup.sh", shell=True)
-    time.sleep(300)
 
 def solve_tasks():
-    thread = threading.Thread(target=func)
-    thread.start()
+    subprocess.Popen("bash vmup.sh", shell=True)
     subprocess.Popen("bash vmpy.sh", shell=True)
     subprocess.Popen("bash vmdown.sh", shell=True)
 
