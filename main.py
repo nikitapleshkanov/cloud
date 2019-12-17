@@ -29,7 +29,11 @@ def add_message():
     text = request.form['text']
     tag = request.form['tag']
     vm1(text, tag)
-    print('help')
+    f()
+    return redirect(url_for('main'))
+
+def f():
+	print('help')
     solve_tasks1()
     time.sleep(10)
     print(1.1)
@@ -38,8 +42,6 @@ def add_message():
     print(1)
     solve_tasks3()
     time.sleep(5)
-    return redirect(url_for('main'))
-
 
 
 def solve_tasks1():
