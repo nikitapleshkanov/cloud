@@ -37,7 +37,7 @@ def add_message():
 
 def solve_tasks1():
     subprocess.Popen("bash vmpy.sh", shell=True)
-    subprocess.Popen("bash vmdown.sh", shell=True)
+#    subprocess.Popen("bash vmdown.sh", shell=True)
 
 
 # def solve_tasks2():
