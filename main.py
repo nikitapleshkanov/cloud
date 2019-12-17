@@ -22,6 +22,7 @@ def hello_world():
 
 @app.route('/main', methods=['GET'])
 def main():
+	messages = {"fdf", "dsngfjs"}
     return render_template('main.html', messages=messages)
 
 
