@@ -1,13 +1,16 @@
 from collections import namedtuple
 
 from flask import Flask, render_template, redirect, url_for, request
-
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
 Message = namedtuple('Message', 'text tag')
 messages = []
 
+def get_mongo_db():
+	client = MongoClient(f'mongodb+srv://pleshkanov:pleshkanov@cluster0-bmzr3.azure.mongodb.net/database', 27017)
+	return client.database.strings
 
 @app.route('/', methods=['GET'])
 def hello_world():
@@ -23,7 +26,13 @@ def main():
 def add_message():
     text = request.form['text']
     tag = request.form['tag']
-
-    messages.append(Message(text, tag))
-
+    vm1(text, tag)
+    #solve_tasks()
     return redirect(url_for('main')) 
+
+def solve_tasks():
+    subprocess.Popen("bash vmup.sh", shell=True)
+
+def vm1(str1, str2):
+	collection = get_mongo_db()
+	collection.insert_one({'str1': str1, 'str2': str2})
