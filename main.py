@@ -22,8 +22,7 @@ def hello_world():
 
 @app.route('/main', methods=['GET'])
 def main():
-	res = {"ans": list(get_mongo_db().tasks.find({}))[-1]}
-	
+    res = {"ans": list(get_mongo_db().tasks.find({}))[-1]}
     return render_template("wait.html", res = res)
     return render_template('main.html', messages=res)
 
