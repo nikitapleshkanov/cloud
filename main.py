@@ -5,6 +5,7 @@ import threading
 from flask import Flask, render_template, redirect, url_for, request
 from pymongo import MongoClient
 
+
 app = Flask(__name__)
 
 Message = namedtuple('Message', 'text tag')
@@ -36,7 +37,7 @@ def add_message():
 
 
 def solve_tasks1():
-    subprocess.Popen("bash vmpy.sh", shell=True)
+    subprocess.Popen("bash script.sh", shell=True)
 #    subprocess.Popen("bash vmdown.sh", shell=True)
 
 
