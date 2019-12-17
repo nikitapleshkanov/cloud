@@ -26,10 +26,8 @@ def main():
 
 @app.route('/result')
 def wait():
-    res = {"ans": list(get_mongo_db().strings.find({}))[-1]}
-    return render_template("result.html",
-        title = 'title',
-        res = res)
+    res = list(get_mongo_db().strings.find().sort([('$natural', -1)]).limit(1))
+    return render_template("result.html", answer=res[0]['result'])
 
 @app.route('/add_message', methods=['POST'])
 def add_message():
