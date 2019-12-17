@@ -24,6 +24,12 @@ def hello_world():
 def main():
     return render_template('main.html')
 
+@app.route('/result')
+def wait():
+    res = {"ans": list(get_mongo_db().strings.find({}))[-1]}
+    return render_template("result.html",
+        title = 'title',
+        res = res)
 
 @app.route('/add_message', methods=['POST'])
 def add_message():
@@ -38,6 +44,7 @@ def add_message():
 
 def solve_tasks1():
     subprocess.Popen("bash script.sh", shell=True)
+    return redirect(url_for('result'))
 #    subprocess.Popen("bash vmdown.sh", shell=True)
 
 
