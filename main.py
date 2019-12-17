@@ -22,9 +22,7 @@ def hello_world():
 
 @app.route('/main', methods=['GET'])
 def main():
-    res = {"ans": list(get_mongo_db().tasks.find({}))[-1]}
-    return render_template("wait.html", res = res)
-    return render_template('main.html', messages=res)
+    return render_template('main.html', messages=messages)
 
 
 @app.route('/add_message', methods=['POST'])
@@ -33,7 +31,6 @@ def add_message():
     tag = request.form['tag']
     vm1(text, tag)
     solve_tasks1()
-    
     return redirect(url_for('main'))
 
 
