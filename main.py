@@ -29,15 +29,27 @@ def add_message():
     text = request.form['text']
     tag = request.form['tag']
     vm1(text, tag)
-    solve_tasks()
+    solve_tasks1()
+    time.out(10)
+    solve_tasks2()
+    time.out(10)
+    solve_tasks3()
+    time.out(10)
     return redirect(url_for('main'))
 
 
-def solve_tasks():
-    subprocess.Popen("bash vmup.sh", shell=True)
-    subprocess.Popen("bash vmpy.sh", shell=True)
-    subprocess.Popen("bash vmdown.sh", shell=True)
 
+def solve_tasks1():
+	subprocess.Popen("bash vmup.sh", shell=True)
+	time.sleep(400)
+
+def solve_tasks2():
+    subprocess.Popen("bash vmpy.sh", shell=True)
+    time.sleep(40)
+
+def solve_tasks3():
+	subprocess.Popen("bash vmdown.sh", shell=True)
+	time.sleep(20)
 
 
 def vm1(str1, str2):
