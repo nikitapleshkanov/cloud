@@ -1,0 +1,1 @@
+az vm deallocate --resource-group VM --name nikitaVM321

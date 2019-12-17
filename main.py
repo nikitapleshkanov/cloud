@@ -1,5 +1,5 @@
 from collections import namedtuple
-
+import time
 from flask import Flask, render_template, redirect, url_for, request
 from pymongo import MongoClient
 
@@ -27,11 +27,17 @@ def add_message():
     text = request.form['text']
     tag = request.form['tag']
     vm1(text, tag)
-    #solve_tasks()
+    solve_tasks()
+    time.sleep(10)
     return redirect(url_for('main')) 
 
 def solve_tasks():
     subprocess.Popen("bash vmup.sh", shell=True)
+    time.sleep(10)
+    subprocess.Popen("bash vmpy.sh", shell=True)
+    time.sleep(10)
+    subprocess.Popen("bash vmdown.sh", shell=True)
+
 
 def vm1(str1, str2):
 	collection = get_mongo_db()
